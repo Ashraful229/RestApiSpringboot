@@ -47,8 +47,8 @@ public class CourseServiceImpl implements CourseService {
 //				c=course;
 //				break;
 //			}
-//		}
-		return courseDao.getOne(courseId);
+//		
+		return courseDao.findById(courseId).get();
 	}
 
 
@@ -59,6 +59,26 @@ public class CourseServiceImpl implements CourseService {
 		//list.add(course);
 		courseDao.save(course);
 		return course;
+	}
+
+
+
+	@Override
+	public Course updateCourse(Course course) {
+		// TODO Auto-generated method stub
+		
+		courseDao.save(course);
+		return course;
+	}
+
+
+
+	@Override
+	public void deleteCourse(long parseLong) {
+		// TODO Auto-generated method stub
+		Course entityCourse=courseDao.getOne(parseLong);
+		courseDao.delete(entityCourse);
+		
 	}
 
 }
